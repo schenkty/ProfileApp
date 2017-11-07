@@ -1,0 +1,20 @@
+PODS:
+  - Material (2.12.7):
+    - Material/Core (= 2.12.7)
+  - Material/Core (2.12.7):
+    - Motion (~> 1.2.0)
+  - Motion (1.2.4):
+    - Motion/Core (= 1.2.4)
+  - Motion/Core (1.2.4)
+
+DEPENDENCIES:
+  - Material
+  - Motion
+
+SPEC CHECKSUMS:
+  Material: ffacedb0eda30ff80085afd79c3a6df054127cd1
+  Motion: ea6cc1d43e7b9c99819bfe91f6aee2500e208fc4
+
+PODFILE CHECKSUM: 0b769757de36a21551e5013b3754baaabe09392d
+
+COCOAPODS: 1.3.1

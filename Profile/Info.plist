@@ -41,5 +41,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This allows for the weather to be checked </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This allows for the weather to be checked </string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>This allows you to ask questions to get more Info</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This allows you to ask questions to get more Info</string>
 </dict>
 </plist>
