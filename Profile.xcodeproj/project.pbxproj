@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		322357F71FB24362000EB775 /* QuestionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322357F61FB24362000EB775 /* QuestionDataSource.swift */; };
+		322357F71FB24362000EB775 /* CommandDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322357F61FB24362000EB775 /* CommandDataSource.swift */; };
 		322819EA1FB1805000850883 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322819E91FB1805000850883 /* HomeViewController.swift */; };
 		329CAF571FB2326C00E6C6FF /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CAF561FB2326C00E6C6FF /* ViewControllerExtensions.swift */; };
-		329CAF5A1FB235BF00E6C6FF /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CAF591FB235BF00E6C6FF /* QuestionCell.swift */; };
+		329CAF5A1FB235BF00E6C6FF /* CommandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CAF591FB235BF00E6C6FF /* CommandCell.swift */; };
 		329CAF5F1FB237FE00E6C6FF /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CAF5E1FB237FE00E6C6FF /* WeatherAPI.swift */; };
 		329CAF611FB2385700E6C6FF /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CAF601FB2385700E6C6FF /* WeatherError.swift */; };
 		329CAF631FB2387400E6C6FF /* Cordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CAF621FB2387400E6C6FF /* Cordinate.swift */; };
@@ -45,10 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		322357F61FB24362000EB775 /* QuestionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDataSource.swift; sourceTree = "<group>"; };
+		322357F61FB24362000EB775 /* CommandDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDataSource.swift; sourceTree = "<group>"; };
 		322819E91FB1805000850883 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		329CAF561FB2326C00E6C6FF /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
-		329CAF591FB235BF00E6C6FF /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		329CAF591FB235BF00E6C6FF /* CommandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCell.swift; sourceTree = "<group>"; };
 		329CAF5E1FB237FE00E6C6FF /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		329CAF601FB2385700E6C6FF /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 		329CAF621FB2387400E6C6FF /* Cordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cordinate.swift; sourceTree = "<group>"; };
@@ -109,8 +109,8 @@
 		329CAF5C1FB237B700E6C6FF /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				329CAF591FB235BF00E6C6FF /* QuestionCell.swift */,
-				322357F61FB24362000EB775 /* QuestionDataSource.swift */,
+				329CAF591FB235BF00E6C6FF /* CommandCell.swift */,
+				322357F61FB24362000EB775 /* CommandDataSource.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -330,8 +330,8 @@
 				329CAF611FB2385700E6C6FF /* WeatherError.swift in Sources */,
 				329CAF631FB2387400E6C6FF /* Cordinate.swift in Sources */,
 				329CAF691FB238DB00E6C6FF /* WeatherModel.swift in Sources */,
-				322357F71FB24362000EB775 /* QuestionDataSource.swift in Sources */,
-				329CAF5A1FB235BF00E6C6FF /* QuestionCell.swift in Sources */,
+				322357F71FB24362000EB775 /* CommandDataSource.swift in Sources */,
+				329CAF5A1FB235BF00E6C6FF /* CommandCell.swift in Sources */,
 				329CAF5F1FB237FE00E6C6FF /* WeatherAPI.swift in Sources */,
 				329CAF671FB238AE00E6C6FF /* JSONDownloader.swift in Sources */,
 				329CAF571FB2326C00E6C6FF /* ViewControllerExtensions.swift in Sources */,

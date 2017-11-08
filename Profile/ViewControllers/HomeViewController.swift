@@ -37,10 +37,8 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Weather
         updateWeather()
-        
         
         // Nav Bar Setup
         navBar.setBackgroundImage(UIImage(), for: .default)
@@ -64,7 +62,9 @@ class HomeViewController: UIViewController {
         determineMyCurrentLocation()
         
         // MARK: Adjust cords here. pls update with user's loc and loc name
-        let cordinate = Cordinate(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+        guard let latitude = locationManager.location?.coordinate.latitude, let longitude = locationManager.location?.coordinate.longitude else { return }
+        
+        let cordinate = Cordinate(latitude: latitude, longitude: longitude)
         
         client.getCurrentWeather(at: cordinate) { [unowned self] currentWeather, error in
             if let currentWeather = currentWeather {
@@ -132,9 +132,18 @@ class HomeViewController: UIViewController {
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
             if let result = result {
                 self.micText.text = result.bestTranscription.formattedString
-                self.searchQuestions(title: result.bestTranscription.formattedString)
-                self.commandAct(words: result.bestTranscription.formattedString)
-                print("Command Set")
+                
+                guard let command = CommandDataSource.searchCommands(words: result.bestTranscription.formattedString) else { return }
+                self.micText.text = command.title
+                
+                print("Command Found: \(command.title). Loading: \(command.location)")
+                
+                switch command.act {
+                case .Url:
+                    self.loadWebView(url: command.location)
+                default:
+                    print("Comamnd not found")
+                }
             } else if let error = error {
                 print(error)
             }
@@ -147,7 +156,7 @@ class HomeViewController: UIViewController {
         let node = audioEngine.inputNode
         node.removeTap(onBus: 0)
         recognitionTask?.cancel()
-        micText.text = "Tap the Button to ask a question 💬"
+        self.micText.text = "Tap the Button to ask a question 💬"
     }
     
     @IBAction func micButtonAction() {

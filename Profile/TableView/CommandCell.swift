@@ -1,5 +1,5 @@
 //
-//  QuestionCell.swift
+//  CommandCell.swift
 //  Profile
 //
 //  Created by Ty Schenk on 11/7/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuestionCell: UITableViewCell {
+class CommandCell: UITableViewCell {
 
     @IBOutlet var title: UILabel!
     @IBOutlet var subText: UILabel!

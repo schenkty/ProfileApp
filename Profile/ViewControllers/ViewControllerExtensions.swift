@@ -30,35 +30,16 @@ extension HomeViewController {
     func setUI(status: SpeechStatus) {
         switch status {
         case .ready:
-            micButton.setImage(#imageLiteral(resourceName: "available"), for: .normal)
+            micButton.setBackgroundImage(#imageLiteral(resourceName: "available"), for: .normal)
         case .recognizing:
-            micButton.setImage(#imageLiteral(resourceName: "stop"), for: .normal)
+            micButton.setBackgroundImage(#imageLiteral(resourceName: "stop"), for: .normal)
         case .unavailable:
-            micButton.setImage(#imageLiteral(resourceName: "unavailable"), for: .normal)
-        }
-    }
-    
-    func searchQuestions(title: String) {
-        if let question = QuestionDataSource.searchQuestions(words: title) {
-            micText.text = "\(question.title)"
+            micButton.setBackgroundImage(#imageLiteral(resourceName: "unavailable"), for: .normal)
         }
     }
 }
 
-extension HomeViewController {
-    func commandAct(words: String) {
-        guard let action = QuestionDataSource.searchQuestions(words: words) else { return }
-        
-        print(action.title)
-        
-        switch action.act {
-        case "url":
-            loadWebView(url: action.location)
-        default:
-            print("comamnd not found")
-        }
-    }
-    
+extension HomeViewController {    
     func loadWebView(url: String) {
         let webVC = storyboard?.instantiateViewController(withIdentifier: "webVC") as! WebViewController
         webVC.url = url
@@ -74,15 +55,15 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return QuestionDataSource.questions.count
+        return CommandDataSource.commands.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionCell
-        let question = QuestionDataSource.questions[indexPath.row]
-        cell.title.text = question.title
-        cell.subText.text = question.subText
-        cell.picView.image = question.icon
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommandCell", for: indexPath) as! CommandCell
+        let command = CommandDataSource.commands[indexPath.row]
+        cell.title.text = command.title
+        cell.subText.text = command.subText
+        cell.picView.image = command.icon
         return cell
     }
 }
