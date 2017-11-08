@@ -97,11 +97,12 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7MB-d6-fJ8">
-                                <rect key="frame" x="335" y="15" width="30" height="30"/>
+                                <rect key="frame" x="325" y="15" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="zt2-vP-9he"/>
+                                    <constraint firstAttribute="width" constant="40" id="QW2-ga-upw"/>
+                                    <constraint firstAttribute="height" constant="40" id="zt2-vP-9he"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="0°">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -124,7 +125,6 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7MB-d6-fJ8" secondAttribute="trailing" constant="10" id="0qX-MQ-SdL"/>
                             <constraint firstItem="ga2-GQ-3a6" firstAttribute="trailing" secondItem="iAZ-4m-2z3" secondAttribute="trailing" id="8FA-n6-W4Q"/>
-                            <constraint firstItem="7MB-d6-fJ8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="502-Ir-ELC" secondAttribute="leading" constant="20" symbolic="YES" id="D3L-FP-0WM"/>
                             <constraint firstItem="nvE-kO-vAm" firstAttribute="top" secondItem="TPD-hA-m5q" secondAttribute="bottom" constant="45" id="Frt-D1-af2"/>
                             <constraint firstItem="ga2-GQ-3a6" firstAttribute="top" secondItem="foR-Rd-8Ji" secondAttribute="bottom" constant="60" id="Mjk-Wy-1Fw"/>
                             <constraint firstItem="7MB-d6-fJ8" firstAttribute="top" secondItem="502-Ir-ELC" secondAttribute="top" constant="15" id="NaM-rn-1YU"/>
