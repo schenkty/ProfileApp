@@ -45,6 +45,26 @@ extension HomeViewController {
         webVC.url = url
         self.present(webVC, animated: true, completion: nil)
     }
+    
+    func launchCommand(text: String) {
+        switch text {
+        case "Treehouse":
+            self.loadWebView(url: "https://teamtreehouse.com/tyschenk")
+        case "LinkedIn":
+            self.loadWebView(url: "https://www.linkedin.com/in/schenkty/")
+        case "Projects":
+            // MARK: Load card screen instead of github
+            self.loadWebView(url: "https://github.com/schenkty")
+        case "Twitter":
+            self.loadWebView(url: "https://twitter.com/schenkty")
+        case "Portfolio":
+            self.loadWebView(url: "https://tyschenk.com")
+        case "Weather":
+            self.updateWeather()
+        default:
+            print("No command")
+        }
+    }
 }
 
 // MARK: Table View Datasource

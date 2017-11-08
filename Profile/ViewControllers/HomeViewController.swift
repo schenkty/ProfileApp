@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
     var locationManager: CLLocationManager!
     
     // Speech
+    var inputText = ""
     var status = SpeechStatus.ready {
         didSet {
             self.setUI(status: status)
@@ -129,20 +130,17 @@ class HomeViewController: UIViewController {
         }
         
         // Analyze the speech
+        request.shouldReportPartialResults = true
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: { result, error in
             if let result = result {
                 self.micText.text = result.bestTranscription.formattedString
-                
-                guard let command = CommandDataSource.searchCommands(words: result.bestTranscription.formattedString) else { return }
-                self.micText.text = command.title
-                
-                print("Command Found: \(command.title). Loading: \(command.location)")
-                
-                switch command.act {
-                case .Url:
-                    self.loadWebView(url: command.location)
-                default:
-                    print("Comamnd not found")
+                if result.bestTranscription.formattedString != "" {
+                    self.request.endAudio()
+                }
+                if result.isFinal == true {
+                    self.launchCommand(text: result.bestTranscription.formattedString)
+                    self.cancelRecording()
+                    self.micButtonAction()
                 }
             } else if let error = error {
                 print(error)

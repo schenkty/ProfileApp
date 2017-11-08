@@ -168,8 +168,9 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-2r-0jB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-2r-0jB" userLabel="Close Button">
                                 <rect key="frame" x="335" y="30" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.95078521569999996" green="0.38148094449999997" blue="0.31325717180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="hwx-C7-LrE"/>
                                     <constraint firstAttribute="width" constant="30" id="tss-Oj-2l0"/>
@@ -192,12 +193,13 @@
                         <viewLayoutGuide key="safeArea" id="fIR-gQ-LRB"/>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="3LA-2r-0jB" id="eeH-J3-wRd"/>
                         <outlet property="webView" destination="KMo-tk-Oi4" id="JV6-bP-rs8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZL-SF-4Av" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="330" y="-230"/>
+            <point key="canvasLocation" x="322" y="-230"/>
         </scene>
     </scenes>
     <resources>
