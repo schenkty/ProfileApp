@@ -18,12 +18,8 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.load(URLRequest(url: URL(string: url)!))
-        /*
-         button.backgroundColor = .clear
-         button.layer.cornerRadius = 5
-         button.layer.borderWidth = 1
-         button.layer.borderColor = UIColor.black.cgColor
-        */
+        
+        // Add a slight rounded corners to the close buttons
         closeButton.layer.cornerRadius = 10
         
     }

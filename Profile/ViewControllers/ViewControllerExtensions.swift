@@ -16,8 +16,8 @@ enum SpeechStatus {
     case unavailable
 }
 
-
 extension UIViewController {
+    // allows for simple handling of UIAlerts
     func showAlert(title: String, message: String? = nil, style: UIAlertControllerStyle = .alert) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         let okAction = UIAlertAction(title: "OK", style: .default)
@@ -37,9 +37,7 @@ extension HomeViewController {
             micButton.setBackgroundImage(#imageLiteral(resourceName: "unavailable"), for: .normal)
         }
     }
-}
-
-extension HomeViewController {    
+    
     func loadWebView(url: String) {
         let webVC = storyboard?.instantiateViewController(withIdentifier: "webVC") as! WebViewController
         webVC.url = url
@@ -52,23 +50,27 @@ extension HomeViewController {
             self.loadWebView(url: "https://teamtreehouse.com/tyschenk")
         case "LinkedIn":
             self.loadWebView(url: "https://www.linkedin.com/in/schenkty/")
-        case "Projects":
-            // MARK: Load card screen instead of github
+        case "Github":
             self.loadWebView(url: "https://github.com/schenkty")
+        case "Projects":
+            let projectsVC = storyboard?.instantiateViewController(withIdentifier: "projects")
+            self.present(projectsVC!, animated: true, completion: nil)
         case "Twitter":
             self.loadWebView(url: "https://twitter.com/schenkty")
         case "Portfolio":
             self.loadWebView(url: "https://tyschenk.com")
+        case "Certificate":
+            self.launchLightbox()
         case "Weather":
-            self.updateWeather()
+            showAlert(title: "Weather is already updated")
         default:
-            print("No command")
+            self.showAlert(title: "Command Not Found")
         }
     }
 }
 
 // MARK: Table View Datasource
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -83,7 +85,23 @@ extension HomeViewController: UITableViewDataSource {
         let command = CommandDataSource.commands[indexPath.row]
         cell.title.text = command.title
         cell.subText.text = command.subText
-        cell.picView.image = command.icon
+        
+        // change tint if needed
+        if command.tint != "blank" {
+            let newImage = command.icon.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            cell.picView.image = newImage
+            cell.picView.tintColor = UIColor(named: command.tint)
+        } else {
+            cell.picView.image = command.icon
+        }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! CommandCell
+        let command = cell.subText.text!.replacingOccurrences(of: "\'", with: "")
+        cell.setSelected(false, animated: true)
+        launchCommand(text: command)
     }
 }

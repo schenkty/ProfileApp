@@ -10,8 +10,10 @@ import UIKit
 import Foundation
 import CoreLocation
 import Speech
+import Lightbox
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, LightboxControllerPageDelegate, LightboxControllerDismissalDelegate {
+    
     @IBOutlet var navBar: UINavigationBar!
     @IBOutlet var weatherButton: UIButton!
     @IBOutlet var micButton: UIButton!
@@ -58,11 +60,10 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: Weather
-    
     @IBAction func updateWeather() {
         determineMyCurrentLocation()
         
-        // MARK: Adjust cords here. pls update with user's loc and loc name
+        // MARK: Adjust cords here. update with user's loc and loc name
         guard let latitude = locationManager.location?.coordinate.latitude, let longitude = locationManager.location?.coordinate.longitude else { return }
         
         let cordinate = Cordinate(latitude: latitude, longitude: longitude)
@@ -75,10 +76,12 @@ class HomeViewController: UIViewController {
         }
     }
     
+    // Updates UIButton with correct weather info
     func displayWeather(using viewModel: WeatherViewModel) {
         weatherButton.setTitle(viewModel.temperature, for: .normal)
     }
     
+    // pulls the current location of the device
     func determineMyCurrentLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self as? CLLocationManagerDelegate
@@ -96,7 +99,6 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: Speech
-    
     // Ask the user for permission
     func askSpeechPermission() {
         SFSpeechRecognizer.requestAuthorization { status in
@@ -168,6 +170,37 @@ class HomeViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    func launchLightbox() {
+        // Create an array of images.
+        let images = [
+            LightboxImage(
+                image: UIImage(named: "degree")!,
+                text: "Treehouse iOS Development TechDegree"
+            )
+        ]
+        
+        let controller = LightboxController(images: images)
+        
+        // Set delegates.
+        controller.pageDelegate = self
+        controller.dismissalDelegate = self
+        
+        // Use dynamic background.
+        controller.dynamicBackground = true
+        
+        // Present your controller.
+        present(controller, animated: true, completion: nil)
+    }
+    
+    // Lightbox Delegates
+    func lightboxController(_ controller: LightboxController, didMoveToPage page: Int) {
+        print(page)
+    }
+    
+    func lightboxControllerWillDismiss(_ controller: LightboxController) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
 }

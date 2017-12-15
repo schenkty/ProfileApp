@@ -4,8 +4,8 @@ use_frameworks!
 
 target 'Profile' do
   # Pods for Profile
-  pod 'Material'
-  pod 'Motion'
+  pod 'Lightbox'
+  pod "Koloda"
   
   target 'ProfileTests' do
     inherit! :search_paths
